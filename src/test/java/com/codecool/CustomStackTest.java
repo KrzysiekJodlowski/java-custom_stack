@@ -15,21 +15,20 @@ class CustomStackTest {
     public void checkIfUserCanPushAString() throws StackOverflow {
         CustomStack<String> customStack = new CustomStack<>(5);
         customStack.push("string");
-        assertEquals(1, customStack.size());
+        assertEquals("string", customStack.peek());
     }
 
     @Test
     public void checkIfUserCanPushIntegers() throws StackOverflow {
-        CustomStack<Integer> customStack = new CustomStack<>(5);
+        CustomStack<Integer> customStack = new CustomStack<>(3);
         customStack.push(99);
-        assertEquals(1, customStack.size());
+        assertEquals(99, customStack.peek());
     }
 
     @Test
     public void getCustomStackSize() throws StackOverflow {
         CustomStack<String> customStack = new CustomStack<>(5);
-        customStack.push("string");
-        assertEquals(1, customStack.size());
+        assertEquals(5, customStack.size());
     }
 
     @Test
@@ -37,7 +36,7 @@ class CustomStackTest {
         CustomStack<String> customStack = new CustomStack<>(5);
         customStack.push("string");
         assertEquals("string", customStack.pop());
-        assertEquals(0, customStack.size());
+        assertEquals(5, customStack.getSpace());
     }
 
     @Test
@@ -45,14 +44,6 @@ class CustomStackTest {
         CustomStack<String> customStack = new CustomStack<>(5);
         customStack.push("string");
         assertEquals("string", customStack.peek());
-        assertEquals(1, customStack.size());
-    }
-
-    @Test
-    public void getFreeSpacesLeft() throws StackOverflow {
-        CustomStack<String> customStack = new CustomStack<>(5);
-        customStack.push("string");
-        assertEquals(4, customStack.getSpace());
     }
 
     @Test
