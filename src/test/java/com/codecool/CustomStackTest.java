@@ -16,6 +16,8 @@ class CustomStackTest {
         CustomStack<String> customStack = new CustomStack<>(5);
         customStack.push("string");
         assertEquals("string", customStack.peek());
+        assertEquals(4, customStack.getSpace());
+
     }
 
     @Test

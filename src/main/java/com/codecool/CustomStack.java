@@ -2,6 +2,10 @@ package com.codecool;
 
 public class CustomStack<T> {
 
+    /*
+     *   Inner class
+     */
+
     private static class Node<T> {
         private int index;
         private T data;
@@ -23,8 +27,13 @@ public class CustomStack<T> {
         }
     }
 
+    /*
+     *   The right one class
+     */
+
     private Node top;
     private int size;
+    private final int COUNT_ONE = 1;
 
     public CustomStack (int initialSize) {
         this.size = initialSize;
@@ -34,17 +43,15 @@ public class CustomStack<T> {
     public void push(T data) throws StackOverflow {
         if (this.top == null) {
             this.top = new Node(data);
-            this.top.setIndex(0);
         } else {
-            if (this.top.getIndex() + 1 == this.size) {
+            if (this.top.getIndex() + this.COUNT_ONE == this.size) {
                 throw new StackOverflow("Stack is full!");
             } else {
                 Node newTop = new Node(data);
-                newTop.setIndex(this.top.getIndex() + 1);
+                newTop.setIndex(this.top.getIndex() + this.COUNT_ONE);
                 this.top = newTop;
             }
         }
-
     }
 
     public T pop() throws StackUnderflow {
@@ -64,13 +71,17 @@ public class CustomStack<T> {
         if (this.top == null) {
             return this.size;
         }
-        return this.size - this.top.getIndex() + 1;
+        return this.size - (this.top.getIndex() + this.COUNT_ONE);
     }
 
     public int size(){
         return this.size;
     }
 }
+
+/*
+ *   Custom exceptions
+ */
 
 class StackOverflow extends Exception {
     public StackOverflow(String message) {
